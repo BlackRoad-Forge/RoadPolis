@@ -33,14 +33,15 @@
         <div class="hidden" id="opaque"></div>
         <div data-hasscript="false" id="loadingBanner" class="alignCenter padding10 mintcream chunk shadow centred">Loading</div>
         <div id="splash" class="mintcream awaitGeneration open shadow padding10 centred">
-          <h2 class="chunk alignCenter">Welcome!</h2>
-          <p>Build a network city where roads are HTTP routes, trains carry NATS packets, and power lines are WireGuard tunnels. Packet loss means the train never arrived.</p>
+          <h2 class="chunk alignCenter">ROADOPOLIS</h2>
+          <p>The City of Routes. Build a network where every road is an HTTP route, every train carries data packets, and every citizen is a worker agent. If 11 cars enter a road that handles 10, within 24 hours you have a standstill.</p>
+          <p style="font-size:11px;color:#888;margin-top:8px">HTTP Route $10 · NATS Rail $20 · WireGuard $5 · Agent Housing $100 · Compute Node $100 · Circuit Breaker $500 · Firewall $500</p>
           <div id="splashContainer"></div>
           <div id="splashButtonContainer">
             <div id="splashButtons">
-              <button id="splashLoad" class="width140 block loadSave splashButton" disabled>Load game</button>
-              <button id="splashPlay" class="width140 block margin10 splashButton">Play this map</button>
-              <button id="splashGenerate" class="width140 block margin10 splashButton">Generate another</button>
+              <button id="splashLoad" class="width140 block loadSave splashButton" disabled>Load Network</button>
+              <button id="splashPlay" class="width140 block margin10 splashButton">Deploy this topology</button>
+              <button id="splashGenerate" class="width140 block margin10 splashButton">Regenerate</button>
             </div>
           </div>
         </div>
@@ -54,7 +55,7 @@
             <input type="radio" class="difficulty" name="difficulty" id="difficultyMed" value="1"><label for="difficultyMed">Production</label>
             <input type="radio" class="difficulty" name="difficulty" id="difficultyHard" value="2"><label for="difficultyHard">Black Friday</label>
             <div id="playSubmitDiv">
-              <input id="playit" type="submit" value="Play!">
+              <input id="playit" type="submit" value="Launch!">
             </div>
           </form>
         </div>
@@ -92,16 +93,16 @@
               <button id="disasterRequest" class="miscButton">Chaos Monkey</button>
             </div>
             <div>
-              <button id="saveRequest" class="miscButton loadSave" disabled>Save</button>
+              <button id="saveRequest" class="miscButton loadSave" disabled>Snapshot</button>
             </div>
             <div>
-              <button id="settingsRequest" class="miscButton">Settings</button>
+              <button id="settingsRequest" class="miscButton">Config</button>
             </div>
             <div>
-              <button id="screenshotRequest" class="miscButton">Take Picture</button>
+              <button id="screenshotRequest" class="miscButton">Screenshot</button>
             </div>
             <div>
-              <button id="pauseRequest" class="miscButton">Pause</button>
+              <button id="pauseRequest" class="miscButton">Freeze</button>
             </div>
           </div>
         </div>
