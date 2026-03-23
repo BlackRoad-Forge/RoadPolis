@@ -177,37 +177,37 @@
       </footer>
       <div class="hidden modal shadow" id="budget">
         <header id="budgetHeader" class="budgetHeader padding10 chunk alignCenter">
-           Budget
+           Resources
         </header>
         <div id="budgetFormContainer" class="padding10 open">
           <form id="budgetForm">
-            <div id="taxInfo" class="elided budgetData">Tax Collected: <span id="taxesCollected"></span></div>
-            <div id="cashInfo" class="elided budgetRight budgetData">Cashflow: <span id="cashFlow"></span></div>
-            <div id="previousInfo" class="elided budgetData">Previous funds: <span id="previousFunds"></span></div>
-            <div id="currentInfo" class="elided budgetRight budgetData">Current funds: <span id="currentFunds"></span></div>
+            <div id="taxInfo" class="elided budgetData">Quotas Collected: <span id="taxesCollected"></span></div>
+            <div id="cashInfo" class="elided budgetRight budgetData">Throughput: <span id="cashFlow"></span></div>
+            <div id="previousInfo" class="elided budgetData">Previous credits: <span id="previousFunds"></span></div>
+            <div id="currentInfo" class="elided budgetRight budgetData">Current credits: <span id="currentFunds"></span></div>
             <fieldset>
-              <legend>Roads</legend>
+              <legend>HTTP Routes</legend>
               <input type="range" id="roadRate" min="0" max="100" step="1" data-source="roadMaintenanceBudget">
               <div>
                 <label for="roadRate" class="elided budgetData" id="roadRateLabel">100% of $100 = $100</label>
               </div>
             </fieldset>
             <fieldset class="budgetRight">
-              <legend>Fire</legend>
+              <legend>Circuit Breakers</legend>
               <input type="range" id="fireRate" min="0" max="100" step="1" data-source="fireMaintenanceBudget">
               <div>
                 <label for="fireRate" class="elided budgetData" id="fireRateLabel">100% of $100 = $100</label>
               </div>
             </fieldset>
             <fieldset>
-              <legend>Police</legend>
+              <legend>Firewalls</legend>
               <input type="range" id="policeRate" min="0" max="100" step="1" data-source="policeMaintenanceBudget">
               <div>
                 <label for="policeRate" class="elided budgetData" id="policeRateLabel">100% of $100 = $100</label>
               </div>
             </fieldset>
             <fieldset class="budgetRight">
-              <legend>Tax</legend>
+              <legend>Resource Quota</legend>
               <input type="range" id="taxRate" min="0" max="20" step="1">
               <div>
                 <label for="taxRate" class="elided budgetData" id="taxRateLabel">100% of $100 = $100</label>
@@ -223,15 +223,15 @@
       </div>
       <div class="hidden modal shadow" id="evalWindow">
         <header id="evalHeader" class="evalHeader padding10 chunk alignCenter">
-           Evaluation
+           Health Check
         </header>
         <div id="evalContainer" class="padding10 open">
           <section id="opinion">
-            <h2 class="alignCenter">Public opinion</h2>
+            <h2 class="alignCenter">Worker Satisfaction</h2>
             <dl class="opinionList alignCenter">
-              <dt class="evalItem opinionItem">Is the mayor doing a good job?</dt>
+              <dt class="evalItem opinionItem">Is the operator doing a good job?</dt>
               <dd class="evalItem opinionItem opinionRight">Yes: <span id="evalYes"></span>% No: <span id="evalNo"></span>%</dd>
-              <dt>What are the worst problems?</dt>
+              <dt>What are the worst bottlenecks?</dt>
               <dd class="evalItem opinionItem opinionRight"><ol id="problemList">
                 <li id="evalProb1"></li> <li id="evalProb2"></li>
                 <li id="evalProb3"></li> <li id="evalProb4"></li>
@@ -241,11 +241,11 @@
           <section id="statistics">
             <h2 class="alignCenter">Statistics</h2>
             <dl id="statisticsList">
-              <dt class="evalItem statisticsItem">Population:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalPopulation"></dd>
-              <dt class="evalItem statisticsItem">Net Migration:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalMigration"></dd>
-              <dt class="evalItem statisticsItem">Assessed Value:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalValue"></dd>
-              <dt class="evalItem statisticsItem">Category:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalClass"></dd>
-              <dt class="evalItem statisticsItem">Game Level:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalLevel"></dd>
+              <dt class="evalItem statisticsItem">Workers:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalPopulation"></dd>
+              <dt class="evalItem statisticsItem">Net Scaling:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalMigration"></dd>
+              <dt class="evalItem statisticsItem">Throughput Value:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalValue"></dd>
+              <dt class="evalItem statisticsItem">Network Class:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalClass"></dd>
+              <dt class="evalItem statisticsItem">Mode:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalLevel"></dd>
               <dt class="evalItem statisticsItem">Score:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalScore"></dd>
               <dt class="evalItem statisticsItem">Annual change:</dt><dd class=" elided statisticsRight evalItem evalRight" id="evalScoreDelta"></dd>
 	    </dl>
@@ -262,15 +262,15 @@
         <div id="disasterContainer" class="padding10 open">
           <form id="disasterForm">
             <div id="disasterSelectContainer" class="alignCenter">
-              <label id="disasterLabel" for="disasterSelect">What disaster do you want to befall this unsuspecting world?</label>
+              <label id="disasterLabel" for="disasterSelect">What chaos do you want to unleash on this network?</label>
               <select id="disasterSelect">
                 <option id="disasterNone" value="None">None</option>
-                <option id="disasterMonster" value="Monster">Monster</option>
-                <option id="disasterFire" value="None">Fire</option>
-                <option id="disasterFlood" value="Flood">Flood</option>
-                <option id="disasterCrash" value="Crash">Crash</option>
-                <option id="disasterMeltdown" value="Meltdown">Meltdown</option>
-                <option id="disasterTornado" value="Tornado">Tornado</option>
+                <option id="disasterMonster" value="Monster">Port Hog</option>
+                <option id="disasterFire" value="None">Cascade Failure</option>
+                <option id="disasterFlood" value="Flood">DDoS Flood</option>
+                <option id="disasterCrash" value="Crash">Node Crash</option>
+                <option id="disasterMeltdown" value="Meltdown">Hailo Meltdown</option>
+                <option id="disasterTornado" value="Tornado">Log Storm</option>
               </select>
             </div>
             <div id="disasterButtons" class="alignCenter margin10">
@@ -282,17 +282,17 @@
       </div>
       <div class="hidden modal shadow" id="queryWindow">
         <header id="queryHeader" class="queryHeader padding10 chunk alignCenter">
-           Query
+           Node Inspector
         </header>
         <div id="queryContainer" class="padding10 open">
           <div class="queryList">
             <dl>
-              <dt class="queryItem">Zone</dt><dd class="queryItem queryRight" id="queryZoneType"></dd>
-              <dt class="queryItem">Density</dt><dd class="queryItem queryRight" id="queryDensity"></dd>
-              <dt class="queryItem">Value</dt><dd class="queryItem queryRight" id="queryLandValue"></dd>
-              <dt class="queryItem">Crime</dt><dd class="queryItem queryRight" id="queryCrime"></dd>
-              <dt class="queryItem">Pollution</dt><dd class="queryItem queryRight" id="queryPollution"></dd>
-              <dt class="queryItem">Growth</dt><dd class="queryItem queryRight" id="queryRate"></dd>
+              <dt class="queryItem">Sector</dt><dd class="queryItem queryRight" id="queryZoneType"></dd>
+              <dt class="queryItem">Traffic Load</dt><dd class="queryItem queryRight" id="queryDensity"></dd>
+              <dt class="queryItem">Uptime Score</dt><dd class="queryItem queryRight" id="queryLandValue"></dd>
+              <dt class="queryItem">Threat Level</dt><dd class="queryItem queryRight" id="queryCrime"></dd>
+              <dt class="queryItem">Memory Pressure</dt><dd class="queryItem queryRight" id="queryPollution"></dd>
+              <dt class="queryItem">Scaling Rate</dt><dd class="queryItem queryRight" id="queryRate"></dd>
             </dl>
             <div id="queryDebugList" class="queryDebug hidden">
               <dl>
@@ -344,10 +344,10 @@
       </div>
       <div class="hidden modal shadow" id="congratsWindow">
         <header id="congratsHeader" class="congratsHeader padding10 chunk alignCenter">
-           Congratulations!
+           Network Milestone!
         </header>
         <div id="congratsContainer" class="padding10 open">
-          <div id="congratsMessage" class="alignCenter">Congratulations!</div>
+          <div id="congratsMessage" class="alignCenter">Network Milestone!</div>
           <form id="congratsForm" class="alignCenter margin10">
             <input type="submit" id="congratsOK" class="dialogOK" value="OK">
           </form>
