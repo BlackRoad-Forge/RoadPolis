@@ -45,7 +45,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0px;
-  height: 5em;
+  height: 0; display: none;
   background-color: #111;
   border-top: 1px solid #222;
 }
@@ -55,7 +55,7 @@ header {
   background-image: none;
   border-bottom: 1px solid #FF2255;
   font-family: 'Chunk', serif;
-  height: 35px;
+  height: 0; display: none;
 }
 
 header h1 {
@@ -65,7 +65,7 @@ header h1 {
 main {
   position: absolute;
   top: 0;
-  bottom: 55px;
+  bottom: 0;
   width: 100%;
   overflow: hidden;
 }
@@ -530,7 +530,7 @@ nav li {
 
 #wrapper {
   position: absolute;
-  top: 55px;
+  top: 0;
   left: 0px;
   right: 0px;
   bottom: 0px;
@@ -875,7 +875,7 @@ nav li {
 
 #aboutMain, #licenseMain {
   position: relative;
-  top: 50px;
+  top: 0;
   margin-bottom: 100px;
 }
 
