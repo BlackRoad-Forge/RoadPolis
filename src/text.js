@@ -18,40 +18,40 @@ import { Simulation } from './simulation.js';
 // TODO Some kind of rudimentary L20N based on navigator.language?
 
 // Query tool strings
-var densityStrings = ['Low', 'Medium', 'High', 'Very High'];
-var landValueStrings = ['Slum', 'Lower Class', 'Middle Class', 'High'];
-var crimeStrings = ['Safe', 'Light', 'Moderate', 'Dangerous'];
-var pollutionStrings = ['None', 'Moderate', 'Heavy', 'Very Heavy'];
-var rateStrings = ['Declining', 'Stable', 'Slow Growth', 'Fast Growth'];
-var zoneTypes = ['Clear', 'Water', 'Trees', 'Rubble', 'Flood', 'Radioactive Waste',
-                 'Fire', 'Road', 'Power', 'Rail', 'Residential', 'Commercial',
-                 'Industrial', 'Seaport', 'Airport', 'Coal Power', 'Fire Department',
-                 'Police Department', 'Stadium', 'Nuclear Power', 'Draw Bridge',
-                 'Radar Dish', 'Fountain', 'Industrial', 'Steelers 38  Bears 3',
-                 'Draw Bridge', 'Ur 238'];
+var densityStrings = ['Low Traffic', 'Medium Traffic', 'High Traffic', 'Congested'];
+var landValueStrings = ['Deprecated', 'Legacy', 'Stable', 'Production'];
+var crimeStrings = ['Secure', 'Minor Threats', 'Vulnerable', 'Breached'];
+var pollutionStrings = ['Clean', 'Minor Leaks', 'Memory Bloat', 'Resource Exhaustion'];
+var rateStrings = ['Losing Nodes', 'Stable', 'Scaling Up', 'Rapid Growth'];
+var zoneTypes = ['Empty', 'Ocean', 'Cache', 'Rubble', 'DDoS Flood', 'Toxic Dump',
+                 'Cascade Failure', 'HTTP Route', 'WireGuard', 'NATS Rail', 'Agent Housing', 'Service Endpoint',
+                 'Compute Node', 'Ferry Terminal', 'Helipad', 'CPU Farm', 'Circuit Breaker',
+                 'Firewall Station', 'Load Balancer', 'Hailo-8 Accelerator', 'Bridge Link',
+                 'Radar Ping', 'Rest Area', 'Compute Node', 'Packet Score: 38-3',
+                 'Bridge Link', 'Ur 238'];
 
 // Evaluation window
 var gameLevel = {};
-gameLevel['' + Simulation.LEVEL_EASY] = 'Easy';
-gameLevel['' + Simulation.LEVEL_MED] = 'Medium';
-gameLevel['' + Simulation.LEVEL_HARD] = 'Hard';
+gameLevel['' + Simulation.LEVEL_EASY] = 'Dev Mode';
+gameLevel['' + Simulation.LEVEL_MED] = 'Production';
+gameLevel['' + Simulation.LEVEL_HARD] = 'Black Friday';
 
 var cityClass = {};
-cityClass[Evaluation.CC_VILLAGE] = 'VILLAGE';
-cityClass[Evaluation.CC_TOWN] = 'TOWN';
-cityClass[Evaluation.CC_CITY] = 'CITY';
-cityClass[Evaluation.CC_CAPITAL] = 'CAPITAL';
-cityClass[Evaluation.CC_METROPOLIS] = 'METROPOLIS';
-cityClass[Evaluation.CC_MEGALOPOLIS] = 'MEGALOPOLIS';
+cityClass[Evaluation.CC_VILLAGE] = 'SEED NODE';
+cityClass[Evaluation.CC_TOWN] = 'CLUSTER';
+cityClass[Evaluation.CC_CITY] = 'NETWORK';
+cityClass[Evaluation.CC_CAPITAL] = 'DATACENTER';
+cityClass[Evaluation.CC_METROPOLIS] = 'MESH';
+cityClass[Evaluation.CC_MEGALOPOLIS] = 'SOVEREIGN CLOUD';
 
 var problems = {};
-problems[Evaluation.CRIME] = 'Crime';
-problems[Evaluation.POLLUTION] = 'Pollution';
-problems[Evaluation.HOUSING] = 'Housing';
-problems[Evaluation.TAXES] = 'Taxes';
-problems[Evaluation.TRAFFIC] = 'Traffic';
-problems[Evaluation.UNEMPLOYMENT] = 'Unemployment';
-problems[Evaluation.FIRE] = 'Fire';
+problems[Evaluation.CRIME] = 'Port Hogging';
+problems[Evaluation.POLLUTION] = 'Memory Leaks';
+problems[Evaluation.HOUSING] = 'Node Shortage';
+problems[Evaluation.TAXES] = 'Resource Quotas';
+problems[Evaluation.TRAFFIC] = 'Packet Congestion';
+problems[Evaluation.UNEMPLOYMENT] = 'Idle Workers';
+problems[Evaluation.FIRE] = 'Cascade Failure';
 
 // months
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -59,8 +59,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
 
 // Tool strings
 var toolMessages = {
-  noMoney: 'Insufficient funds to build that',
-  needsDoze: 'Area must be bulldozed first'
+  noMoney: 'Insufficient compute credits',
+  needsDoze: 'Node must be decommissioned first'
 };
 
 // Message strings
@@ -110,45 +110,45 @@ goodMessages[Messages.REACHED_METROPOLIS] = true;
 goodMessages[Messages.REACHED_TOWN] = true;
 
 var messageText = {};
-messageText[Messages.FIRE_STATION_NEEDS_FUNDING] = 'Fire departments need funding';
-messageText[Messages.NEED_AIRPORT] = 'Commerce requires an Airport';
-messageText[Messages.NEED_FIRE_STATION] = 'Citizens demand a Fire Department';
-messageText[Messages.NEED_ELECTRICITY] = 'Build a Power Plant';
-messageText[Messages.NEED_MORE_INDUSTRIAL] = 'More industrial zones needed';
-messageText[Messages.NEED_MORE_COMMERCIAL] = 'More commercial zones needed';
-messageText[Messages.NEED_MORE_RESIDENTIAL] = 'More residential zones needed';
-messageText[Messages.NEED_MORE_RAILS] = 'Inadequate rail system';
-messageText[Messages.NEED_MORE_ROADS] = 'More roads required';
-messageText[Messages.NEED_POLICE_STATION] = 'Citizens demand a Police Department';
-messageText[Messages.NEED_SEAPORT] = 'Industry requires a Sea Port';
-messageText[Messages.NEED_STADIUM] = 'Residents demand a Stadium';
-messageText[Messages.ROAD_NEEDS_FUNDING] = 'Roads deteriorating, due to lack of funds';
-messageText[Messages.POLICE_NEEDS_FUNDING] = 'Police departments need funding';
-messageText[Messages.WELCOME] = 'Welcome to micropolisJS';
-messageText[Messages.BLACKOUTS_REPORTED] = 'Brownouts, build another Power Plant';
-messageText[Messages.EARTHQUAKE] = 'Major earthquake reported !!';
-messageText[Messages.EXPLOSION_REPORTED] = 'Explosion detected ';
-messageText[Messages.FLOODING_REPORTED] = 'Flooding reported !';
-messageText[Messages.FIRE_REPORTED] = 'Fire reported ';
-messageText[Messages.HEAVY_TRAFFIC] = 'Heavy Traffic reported';
-messageText[Messages.HELICOPTER_CRASHED] = 'A helicopter crashed ';
-messageText[Messages.HIGH_CRIME] = 'Crime very high';
-messageText[Messages.HIGH_POLLUTION] = 'Pollution very high';
-messageText[Messages.MONSTER_SIGHTED] = 'A Monster has been sighted !';
-messageText[Messages.NO_MONEY] = 'YOUR CITY HAS GONE BROKE';
-messageText[Messages.NOT_ENOUGH_POWER] = 'Blackouts reported: insufficient power capacity';
-messageText[Messages.NUCLEAR_MELTDOWN] = 'A Nuclear Meltdown has occurred !!';
-messageText[Messages.PLANE_CRASHED] = 'A plane has crashed ';
-messageText[Messages.SHIP_CRASHED] = 'Shipwreck reported ';
-messageText[Messages.TAX_TOO_HIGH] = 'Citizens upset. The tax rate is too high';
-messageText[Messages.TORNADO_SIGHTED] = 'Tornado reported !';
-messageText[Messages.TRAFFIC_JAMS] = 'Frequent traffic jams reported';
-messageText[Messages.TRAIN_CRASHED] = 'A train crashed ';
-messageText[Messages.REACHED_CAPITAL] = 'Population has reached 50,000';
-messageText[Messages.REACHED_CITY] = 'Population has reached 10,000';
-messageText[Messages.REACHED_MEGALOPOLIS] = 'Population has reached 500,000';
-messageText[Messages.REACHED_METROPOLIS] = 'Population has reached 100,000';
-messageText[Messages.REACHED_TOWN] = 'Population has reached 2,000';
+messageText[Messages.FIRE_STATION_NEEDS_FUNDING] = 'Circuit breakers need funding';
+messageText[Messages.NEED_AIRPORT] = 'Services require a Helipad for emergency routing';
+messageText[Messages.NEED_FIRE_STATION] = 'Workers demand a Circuit Breaker station';
+messageText[Messages.NEED_ELECTRICITY] = 'Build a WireGuard tunnel';
+messageText[Messages.NEED_MORE_INDUSTRIAL] = 'More compute nodes needed';
+messageText[Messages.NEED_MORE_COMMERCIAL] = 'More service endpoints needed';
+messageText[Messages.NEED_MORE_RESIDENTIAL] = 'More agent housing needed';
+messageText[Messages.NEED_MORE_RAILS] = 'Inadequate NATS pub/sub rail system';
+messageText[Messages.NEED_MORE_ROADS] = 'More HTTP routes required';
+messageText[Messages.NEED_POLICE_STATION] = 'Workers demand a Firewall Station';
+messageText[Messages.NEED_SEAPORT] = 'Compute requires a Ferry Terminal for cross-ocean traffic';
+messageText[Messages.NEED_STADIUM] = 'Agents demand a Load Balancer';
+messageText[Messages.ROAD_NEEDS_FUNDING] = 'HTTP routes degrading, insufficient bandwidth';
+messageText[Messages.POLICE_NEEDS_FUNDING] = 'Firewall stations need funding';
+messageText[Messages.WELCOME] = 'Welcome to Roadopolis — The City of Routes';
+messageText[Messages.BLACKOUTS_REPORTED] = 'Tunnel down! Build another WireGuard node';
+messageText[Messages.EARTHQUAKE] = 'Major infrastructure failure reported !!';
+messageText[Messages.EXPLOSION_REPORTED] = 'OOM Kill detected — process exploded';
+messageText[Messages.FLOODING_REPORTED] = 'DDoS flood reported !';
+messageText[Messages.FIRE_REPORTED] = 'Cascade failure spreading ';
+messageText[Messages.HEAVY_TRAFFIC] = 'Heavy packet congestion reported';
+messageText[Messages.HELICOPTER_CRASHED] = 'Emergency worker crashed ';
+messageText[Messages.HIGH_CRIME] = 'Port hogging critical — resources being stolen';
+messageText[Messages.HIGH_POLLUTION] = 'Memory leaks critical — garbage collection failing';
+messageText[Messages.MONSTER_SIGHTED] = 'A Port Hog has been sighted !';
+messageText[Messages.NO_MONEY] = 'YOUR NETWORK HAS RUN OUT OF CREDITS';
+messageText[Messages.NOT_ENOUGH_POWER] = 'Nodes offline: insufficient WireGuard capacity';
+messageText[Messages.NUCLEAR_MELTDOWN] = 'Hailo-8 thermal runaway — meltdown !!';
+messageText[Messages.PLANE_CRASHED] = 'A broadcast packet was lost ';
+messageText[Messages.SHIP_CRASHED] = 'Ferry lost at sea — TCP connection reset ';
+messageText[Messages.TAX_TOO_HIGH] = 'Workers upset. Resource quotas too restrictive';
+messageText[Messages.TORNADO_SIGHTED] = 'Log storm reported — disk filling fast !';
+messageText[Messages.TRAFFIC_JAMS] = 'Packet loss exceeding threshold — trains not arriving';
+messageText[Messages.TRAIN_CRASHED] = 'A NATS train derailed — messages lost ';
+messageText[Messages.REACHED_CAPITAL] = 'Network has reached 50,000 workers — DATACENTER';
+messageText[Messages.REACHED_CITY] = 'Network has reached 10,000 workers — NETWORK';
+messageText[Messages.REACHED_MEGALOPOLIS] = 'Network has reached 500,000 workers — SOVEREIGN CLOUD';
+messageText[Messages.REACHED_METROPOLIS] = 'Network has reached 100,000 workers — MESH';
+messageText[Messages.REACHED_TOWN] = 'Network has reached 2,000 workers — CLUSTER';
 
 var Text = {
   badMessages: badMessages,
